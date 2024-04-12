@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+body {
+    font-family: Arial;
+}
+
+div#container {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+div#container > div#tab {
+    /* border: solid 1px red; */
+
+    border: solid 1px #ccc;
+    background-color: #f1f1f1; 
+    overflow: hidden;
+}
+
+div#tab > button {
+    width: 100px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px; 
+    font-size: 17px;
+    /* float: left;  버튼과 버튼사이의 여백없이 계속해서 붙여가면서 하려고 하는 것임 */
+}
+
+div#tab > button:hover {
+    background-color: #e28787;
+}
+
+div#container > div.content {
+    display: none;  /*content 를 전부 다 감춤*/
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    border-top: none;
+}
+
+.active {
+    background-color: navy;
+    color: white;
+}
