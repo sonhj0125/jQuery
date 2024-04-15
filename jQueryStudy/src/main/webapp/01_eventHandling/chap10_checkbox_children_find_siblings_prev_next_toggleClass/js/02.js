@@ -146,7 +146,8 @@ $(document).ready(function(){
     $("button#btnOK").click( e => {
 
         // === name 이 person 인 체크박스의 개수 === //
-
+        const length_person = $("div#firstDiv input:checkbox[name='person']").length;
+        $("div#checkboxCnt").find("span#cnt").html(length_person);
 
 
 
@@ -156,7 +157,7 @@ $(document).ready(function(){
 
 
 
-        
+
 
     }); // end of $("button#btnOK").click( e => {} )
 
