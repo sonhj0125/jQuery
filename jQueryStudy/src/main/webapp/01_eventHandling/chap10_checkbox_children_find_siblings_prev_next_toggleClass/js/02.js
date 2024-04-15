@@ -150,16 +150,57 @@ $(document).ready(function(){
         $("div#checkboxCnt").find("span#cnt").html(length_person);
 
 
-
-
-
         // === name 이 person 인 체크박스중 체크가 되어진 체크박스의 개수 === //
+        const length_person_checked = $("div#firstDiv input:checkbox[name='person']:checked").length;
+        $("div#checkboxCnt").find("span#checkedCnt").html(length_person_checked);
 
 
-
-
+        if(length_person_checked == 2) {
+            // const arr_checked_val = []; 배열을 만든다.
+            // 또는   
+            const arr_checked_val = new Array();
+        
+            $("div#firstDiv input:checkbox[name='person']:checked").each((i, elt)=>{
+                arr_checked_val.push($(elt).val()); 
+            });// end of $("div#firstDiv input:checkbox[name='person']:checked").each()------- 
+            
+            $("div#checkboxCnt").find("span#checkedValue").html(arr_checked_val.join(", "));
+        }
+        else {
+            alert("2명을 선택해주세요!")
+        }
 
     }); // end of $("button#btnOK").click( e => {} )
+
+
+
+    // ==== 체크박스 여러개중 라디오 처럼 1개만 선택되도록 만든다. ==== //
+    $("p#p input:checkbox[name='person2']").click( e => {
+
+        $("p#p input:checkbox[name='person2']").prop("checked", false); // 체크박스를 모두 못사용하게 막음
+        $(e.target).prop("checked", true);  // 선택한 곳만 체크박스에 체크가 1개만 가능하게 만듦
+
+  
+    /////////////////////////////////////////////////////
+      
+    // 선택자.parent() 는 선택자의 부모요소(부모태그)를 가리키는 것이다.
+    // 선택자.parent().parent() 는 선택자의 부모요소의 부모요소(부모태그의 부모태그)를 가리키는 것이다. 
+    // 선택자.siblings() 는 선택자의 형제요소(형제태그)중 선택자(자기자신)을 제외한 나머지 모든 형제요소(형제태그)를 가리키는 것이다. 
+    $(e.target).parent().siblings().css('opacity','0.2');   // 자기를 빼고 나머지 다 희미하게 바뀜
+    $(e.target).parent().css('opacity','1.0');
+    
+    $(e.target).parent().parent().find("label").removeClass("blueColor greenColor");
+    // addClass() 및 removeClass() 사용시 복수개의 클래스명을 사용할 수 있다.  
+    
+    $(e.target).prev().addClass("blueColor");
+    // 선택자.prev() 는 선택자의 바로 앞의 형제요소(형제태그)를 가리키는 것이다.
+    
+    $(e.target).next().addClass("greenColor");
+    // 선택자.next() 는 선택자의 바로 뒤의 형제요소(형제태그)를 가리키는 것이다.
+
+    }); // end of $("p#p input:checkbox[name='person2']").click( (e) => {} )    
+
+
 
 
 
