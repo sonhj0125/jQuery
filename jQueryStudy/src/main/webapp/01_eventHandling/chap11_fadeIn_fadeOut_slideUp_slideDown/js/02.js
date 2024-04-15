@@ -48,7 +48,7 @@ $(document).ready(function() {
 	$("div.personInfo").eq(1).css('border','solid 1px green');
 	$("div.personInfo:eq(2)").css('border','solid 1px blue');
 */	
-    $("div.personInfo").hide();
+    $("div.personInfo").hide();	// 전부 감추기
 	
     for(let i=1; i<=arrPerson.length; i++){
 		setTimeout(function(){
